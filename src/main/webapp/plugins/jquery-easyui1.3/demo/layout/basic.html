@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body style="padding:0px;margin:0px;">
+	
+
+	<div class="easyui-layout" style="width:100%;height:650px;">
+		<div data-options="region:'north'" style="height:70px">
+			<div id="pp"  style="border:1px solid #ddd;"></div>
+		</div>
+		<div data-options="region:'south'" style="height:20px;">南方
+		</div>
+		
+		
+		
+		<div data-options="region:'west',split:true" title="菜单栏" style="width:160px;">
+			<div class="easyui-accordion" data-options="fit:true,border:false">
+				<div title="系统管理" data-options="selected:true" style="padding:10px;">
+					<a href="#" onClick="addTab('用户管理','real1.html')">系统用户管理</a>
+				</div>
+				<div title="Title2" data-options="selected:true" style="padding:10px;">
+					content2
+				</div>
+				<div title="Title3" style="padding:10px">
+					content3
+				</div>
+			</div>
+		</div>
+		<div data-options="region:'center'">
+				<div id="tabs">
+					<div title="My Documents" style="padding:10px;">
+						我的工作台
+						<input type="button" id="removeSpace" value="click"/>
+					</div>
+				</div>
+		</div>
+	</div>
+
+<script>
+	$(function(){
+		$("#tabs").tabs({
+			height:550
+		});
+	})
+	
+	//add tab
+function addTab(title, url){
+	if ($('#tabs').tabs('exists', title)){
+		$('#tabs').tabs('select', title);//选中并刷新
+		var currTab = $('#tabs').tabs('getSelected');
+		var url = $(currTab.panel('options').content).attr('src');
+		if(url != undefined && currTab.panel('options').title != 'Home') {
+			$('#tabs').tabs('update',{
+				tab:currTab,
+				options:{
+					content:createFrame(url)
+				}
+			})
+		}
+	} else {
+		var content = createFrame(url);
+		$('#tabs').tabs('add',{
+			title:title,
+			content:content,
+			closable:true
+		});
+	}
+	//tabClose();
+}
+function createFrame(url) {
+	var s = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+	return s;
+}
+
+$(function(){
+	$("#removeSpace").bind("click",function(){
+		$("#tmp_downloadhelper_iframe").remove();	
+	})
+	
+})
+
+</script>
+</body>
+</html>

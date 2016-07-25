@@ -1,0 +1,118 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+.icon-users{
+	background:url('icons/users.png') no-repeat;
+}
+.icon-currencyedit{
+	background:url('icons/currency_yuan_edit.png') no-repeat;
+}
+.icon-xzrs{
+	background:url('icons/user5.png') no-repeat;
+}
+.icon-finance{
+	background:url('icons/money_yen.png') no-repeat; 
+}
+.icon-report{
+	background:url('icons/report_form.png') no-repeat;
+}
+.icon-quality{
+	background:url('icons/quality.png') no-repeat;
+}
+.icon-list{
+	background:url('icons/list.png') no-repeat;
+}
+.icon-income{
+	background:url('add-icons/coins.png') no-repeat;
+}
+.icon-divestment{
+	background:url('add-icons/divestment.png') no-repeat;
+}
+.icon-divestment-apply{
+	background:url('add-icons/apply_divest.png') no-repeat;
+}
+.icon-apply-image{
+	background:url('add-icons/apply_image.png') no-repeat;
+}
+.icon-exit{
+	background:url('add-icons/exit.png') no-repeat;
+}
+.icon-log-off{
+	background:url('add-icons/log_off.png') no-repeat;
+}
+.icon-examine{
+	background:url('add-icons/examine.png') no-repeat;
+}
+.icon-panel{
+	background:url('add-icons/panel.png') no-repeat;
+}
+.icon-theme{
+	background:url('add-icons/color.png') no-repeat; 
+}
+.icon-psd-edit{
+	background:url('add-icons/password_edit.png') no-repeat;
+}
+.icon-create-comm{
+	background:url('add-icons/coins_add.png') no-repeat; 
+}

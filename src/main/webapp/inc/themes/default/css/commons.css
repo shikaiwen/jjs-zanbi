@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+.mydialog {
+}
+.mydialog .mydialog-mask {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+.mydialog .mydialog-interactive {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.mydialog .mydialog-interactive .mydialog-placeholder {
+	height: 50%;
+}
+.mydialog .mydialog-interactive .mydialog-ic {
+	border-radius: 8px;
+	background-color: white;
+}
+.mydialog .mydialog-interactive .mydialog-title {
+	background-color: #ff5500;
+	margin: 0;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+	padding-left: 10px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	font-weight: normal;
+}
+.mydialog .mydialog-interactive .mydialog-btns {
+	background-color: #eeeeee;
+	height: 40px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.mydialog .mydialog-interactive .mydialog-btns .mydialog-btn-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+	padding: 0 10px;
+	margin-top: 6px;
+}
+.mydialog .mydialog-interactive .mydialog-content {
+	font-size: 14px;
+	padding: 0;
+	margin: 10px;
+}
+.mydialog .mydialog-interactive .close-btn {
+	font-family: simhei;
+	float: right;
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg); 	/* Opera */
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.mydialog .mydialog-interactive .mydialog-btns .mydialog-btn-list .mydialog-btn-item {
+	float: left;
+	padding: 0 14px;
+	height: 28px;
+	background-color: #ff5500;
+	color: white;
+	line-height: 28px;
+	border-radius: 4px;
+	margin-left: 10px;
+}
+.mydialog .mydialog-interactive .mydialog-btns .mydialog-btn-list .mydialog-btn-item:first-child {
+	margin-left: 0;
+}
+.noscrolling {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+}

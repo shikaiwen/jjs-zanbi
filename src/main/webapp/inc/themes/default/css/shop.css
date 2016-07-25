@@ -1,0 +1,336 @@
+@CHARSET "UTF-8";
+body {
+	margin: 0;
+	font-family: 'Microsoft yahei', 'Arial', '黑体','Simhei','Simsun', '宋体'
+}
+#content {
+	width: 100%;
+}
+#content .shop-header-with-submenu {
+	height: 100px;
+}
+#shop-header {
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+#shop-header .submenu {
+	background-color: rgb(236, 234, 234);
+}
+#shop-header .bar {
+	background-color:#dc4950;
+}
+.after-fixed {
+	margin-top: 50px;
+	/*
+	display: inline-block;
+	width: 100%;
+	height: 0;
+	*/
+}
+.after-fixed-submenu {
+	margin-top: 100px!important;
+}
+#shop-header ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	height: 50px;
+}
+#shop-header ul li {
+	
+}
+#shop-header ul .back-holder {
+	position: relative;
+	height: auto;
+}
+#shop-header ul .back {
+	position: absolute;
+	background-image: url(../imgs/left.png);
+	width: 22px;
+	height: 20px;
+	background-size: 50% auto;
+	background-repeat: no-repeat;
+	top: 15px;
+	left: 16px;
+}
+#shop-header ul .title {
+	text-align: center;
+	margin-left: 36px;
+	margin-right: 44px;
+	height: 50px;
+	line-height: 50px;
+	color: white;
+	font-size: 20px;
+}
+#shop-header ul .menu-holder {
+	position: relative;
+	height: auto;
+}
+#shop-header ul .menu {
+	background-image: url(../imgs/imenu.png);
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-size: 80% auto;
+	position: absolute;
+	right: 10px;
+	top: -33px;
+}
+#shop-header .submenu a{
+	text-decoration: none;
+	color: black;
+}
+#shop-header .submenu ul {
+	float: right;
+	margin-right: 12px;
+}
+#shop-header .hidden-submenu {
+	display: none;
+}
+#shop-header .submenu .menu-section{
+	width: 50px;
+	text-align: center;
+	margin-top: 6px;
+	border-left: 1px #d2d2d2 solid;
+	padding: 0 5px;
+}
+#shop-header .submenu li .icon {
+	display: block;
+	height: 20px;
+}
+#shop-header .submenu li .icon img{
+	max-width: 20px;
+	max-height: 20px;
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+#shop-header .submenu li .txt {
+	display: block;
+	font-size: 12px;
+	text-shadow: initial;
+	font-weight: normal;
+}
+#shop-info {
+	/*margin-top: -3px;*/
+	font-family: '黑体', 'Microsoft yahei', 'Arial', 'Simhei','Simsun', '宋体'
+}
+#shop-info .t1 {
+	height: 72px;
+	width: 100%;
+	background-color: #bf0707;
+}
+#shop-info .t1 .shop-title-desc {
+	height: 72px;
+	position: relative;
+	left: 0;
+	top: 20px;
+	margin-left: 14px;
+}
+#shop-info .t1 .shop-title-desc .pic {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #d5d5d5;
+	display: table-cell;
+	vertical-align: middle;
+	background-color: white;
+}
+#shop-info .t1 .shop-title-desc .desc {
+	margin-left: 10px;
+	color: white;
+	font-size: 14px;
+}
+#shop-info .t1 .shop-title-desc .desc .d1{
+	margin-top: 10px;
+	font-size:16px;
+}
+#shop-info .t1 .shop-title-desc .desc .d1 .shop-tel{
+	font-size: 12px;
+	margin-left: 4px;
+}
+#shop-info .t1 .shop-title-desc .desc .d2{
+	margin-top: 6px;
+}
+.shop-title-desc ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.shop-title-desc p {
+	margin: 0;
+	padding: 0;
+}
+.shop-title-desc ul li {
+	float: left;
+}
+#shop-info .t2 {
+	width: 100%;
+	height: 50px;
+	background-color: #efefef;
+	border-bottom: 1px #e0e0e0 solid;
+}
+#product-list {
+	
+}
+#product-list .list-wrapper {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#product-list .list-wrapper .list-item {
+	border-top: 1px #ffffff solid;
+	border-bottom: 1px #e0e0e0 solid;
+	background-color: #f3f3f3;
+	height: 108px;
+}
+#product-list .list-wrapper .list-item ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 18px;
+	margin-left: 10px;
+}
+#product-list .list-item .product-icon-wrapper {
+	height: 70px;
+	width: 70px;
+	border: 1px solid #d5d5d5;
+	display: table-cell;
+	vertical-align: middle;
+	background-color: white;
+	text-align: center;
+}
+#product-list .list-item .product-icon-wrapper img {
+	max-width: 70px;
+	max-height: 70px;
+	vertical-align: middle;
+}
+#product-list .list-item li {
+	float: left;
+}
+#product-list .list-item .product-desc {
+	margin-left: 10px;
+	color: black;
+}
+#product-list .list-item .product-info {
+	margin-top: 8px;
+	height: 36px;
+}
+#product-list .list-item .product-price {
+	color: #d30808;
+}
+#product-list .list-item .product-price span {
+	font-size: 18px;
+	font-weight: bold;
+}
+#product-list .list-wrapper .list-item {
+	font-size: 14px;
+}
+#product-list .list-wrapper .list-item a {
+	text-decoration: none;
+}
+#section-entry {
+	margin-top: 10px;
+	width: 100%;
+}
+#section-entry .entry-holder {
+	width: 80px;
+	height: 80px;
+	border: 1px #fc7070 solid;
+	background: linear-gradient(top, #fec3c3, #fb4d4d);
+	background: -webkit-linear-gradient(top, #fec3c3, #fb4d4d);
+	border-radius: 4px;
+}
+#section-entry .holder-left {
+	float: left;
+	margin-left: 40px;
+}
+#section-entry .holder-right {
+	float: right;
+	margin-right: 40px;
+}
+#section-entry .entry-line {
+	margin-bottom: 10px;
+}
+#section-entry .entry-holder .icon {
+	color: #efefef;
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6px;
+}
+#section-entry .entry-holder span {
+	display: block;
+	text-align: center;
+	width: 100%;
+	margin-top: 2px;
+	color: #efefef;
+}
+#content .form-field-container {
+	font-size: 14px;
+	margin-top: 10px;
+	display: inline-block;
+	width: 100%;
+}
+#content .form-field-container ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	padding: 0 8px;
+}
+#content .form-field-container .field-item {
+	margin-bottom: 10px;
+}
+#content .form-field-container .field-item .btn {
+	text-align: center;
+	background-color: #ff8800;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	color: white;
+}
+#content .form-field-container .field-item dl {
+	margin: 0;
+	padding: 0;
+}
+#content .form-field-container .field-item dl  dt{
+	margin: 0;
+	padding: 0;
+	height: 20px;
+}
+#content .form-field-container .field-item dl  dd{
+	margin: 0;
+	padding: 0;
+}
+#content .form-field-container .field-item .field-wrapper {
+	position: relative;
+}
+#content .form-field-container .field-item .field-wrapper .clear-field-value {
+	position: absolute;
+	display: block;
+	background-image: url(../imgs/search_close.jpg);
+	background-repeat: no-repeat;
+	top: 10px;
+	right: 4px;
+	width: 15px;
+	height: 15px;
+	background-size: 15px 15px;
+}
+#content .form-field-container .field-item .text-field {
+	border: 1px #cccccc solid;
+	height: 36px;
+	padding: 0 10px;
+	outline: none;
+	width: 100%;
+	overflow: hidden;
+	 -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;   
+}

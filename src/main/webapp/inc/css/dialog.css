@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+/*
+.ui-popup-show .ui-dialog {
+	background-color: rgba(0, 0, 0, 0.86)!important;
+	border: none;
+	color: white;
+	text-shadow: none;
+}
+.ui-dialog-close {
+	color: white;
+	opacity: 0.8;
+}
+.ui-dialog-close:hover, .ui-dialog-close:focus {
+	color: white!important;
+}
+.ui-dialog-header {
+	border-bottom: none;
+}
+*/
+.ui-popup-show .ui-dialog {
+	background-color: #FFF!important;
+}
+.dialog-theme-a .ui-dialog {
+	background-color: rgba(0, 0, 0, 0.6)!important;
+	border: none;
+	color: white;
+	text-shadow: none;
+	font-size: 20px;
+}
+.dialog-theme-a .ui-dialog-close {
+	color: white;
+	opacity: 0.8;
+}
+.dialog-theme-a .ui-dialog-close:hover, .dialog-theme-a .ui-dialog-close:focus {
+	color: white!important;
+}
+.dialog-theme-a .ui-dialog-header {
+	border-bottom: none;
+}
+.dialog-theme-b .ui-dialog {
+	background-color: rgba(0, 0, 0, 0.86)!important;
+	border: none;
+	color: white;
+	text-shadow: none;
+	font-size: 20px;
+}
+.dialog-theme-b .ui-dialog-close {
+	color: white;
+	opacity: 0.8;
+}
+.dialog-theme-b .ui-dialog-close:hover, .dialog-theme-a .ui-dialog-close:focus {
+	color: white!important;
+}
+.dialog-theme-b .ui-dialog-header {
+	border-bottom: none;
+}

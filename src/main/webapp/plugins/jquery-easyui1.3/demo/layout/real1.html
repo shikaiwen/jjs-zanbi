@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		$('#dg').datagrid({  
+		   title:' ',
+		   url:'../datagrid/datagrid_data1.json',
+		   toolbar:"#tb",
+		   
+		   pagination:true,
+		   singleSelect:true,
+		    columns:[[  
+		        {field:'code',title:'用户代码',align:'center',width:100},  
+		        {field:'name',title:'用户名称',align:'center',width:100},  
+		        {field:'price',title:'性别',width:100,align:'center'},
+		        {field:'price',title:'性别',width:100,align:'center'},
+		        {field:'price',title:'性别',width:100,align:'center'},
+		        {field:'price',title:'性别',width:100,align:'center'},
+		        {field:'price',title:'性别we',width:100,align:'center'},
+		        {field:'price',title:'性别we',width:100,align:'center'},
+		        {field:'price',title:'性别we',width:100,align:'center'},
+		        {field:'price',title:'性别ew',width:100,align:'center'},
+		        {field:'price',title:'性别s',width:100,align:'center'},
+		        {field:'price',title:'性别dd',width:100,align:'center'},
+		        {field:'price',title:'性别sd',width:100,align:'center'},
+		        {field:'price',title:'创建日期',width:100,align:'center'}
+		    ]],
+		    fitColumns:false
+		    
+		});
+		
+		//分页
+		var p = $('#dg').datagrid('getPager');
+		$(p).pagination({
+			pageSize:5,
+			pageList:[5,10,22,20],
+			beforePageText:'第',
+			afterPageText:'页     共{pages}页',
+			displayMsg:'当前显示 {from} - {to} 条记录',
+			onBeforeRefresh:function(){
+				alert('before refresh');
+			}
+		});
+		
+
+	});
+</script>
+</head>
+<body style="padding:0px;margin:0px;">
+
+	<table id="dg"></table>
+	
+	<div id="tb" >
+		<div style="margin-bottom:5px">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加&nbsp;</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+		</div>
+		
+		<div  style="margin-bottom:5px">
+			Date From: <input class="easyui-datebox" style="width:80px">
+			To: <input class="easyui-datebox" style="width:80px">
+			Language: 
+			<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+				<option value="java">Java</option>
+				<option value="c">C</option>
+				<option value="basic">Basic</option>
+				<option value="perl">Perl</option>
+				<option value="python">Python</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+		</div>
+	</div>
+	
+
+	
+	
+	</body>
+</html>

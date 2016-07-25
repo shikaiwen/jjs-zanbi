@@ -1,0 +1,10 @@
+#每一行表示一个可使用的账号
+#例如：
+#helloworld 123456
+#上面表示用户名为helloworld密码为123456可以登录系统
+#每行以“井号”开头表示该行为注释行，程序将忽略该内容
+starryconn starryconn@123
+admin admin123456
+kevin kevin123456
+guojuan	guojuan123456
+zhaojian zhaojian123456
