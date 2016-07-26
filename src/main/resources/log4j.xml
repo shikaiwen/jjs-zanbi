@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <!-- 记录info 和警告的日志 -->
+    <appender name="infolog" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- windows在eclipse目录下，linux在 tomcat\bin\logs -->
+        <param name="File" value="logs/log.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} - [%c:%L] [%t] %-5p %x - %m%n" />
+        </layout>
+        <!-- 控制日志级别info 和warn -->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO" />
+            <param name="LevelMax" value="WARN" />
+        </filter>
+    </appender>
+
+    <!-- 只记录错误日志 -->
+    <appender name="errorlog" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- windows在eclipse目录下，linux在 tomcat\bin\logs -->
+        <param name="File" value="logs/error.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} - [%c:%L] [%t] %-5p %x - %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR" />
+        </filter>
+    </appender>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - [%c:%L] [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+
+
+
+    <!-- 根logger的设置 -->
+    <root>
+        <priority value="DEBUG" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="infolog" />
+        <appender-ref ref="errorlog" />
+    </root>
+</log4j:configuration>

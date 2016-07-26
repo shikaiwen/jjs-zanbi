@@ -1,11 +1,11 @@
 package com.jjs.zanbi.dao;
 
 
-import java.util.List;
-
+import com.jjs.zanbi.model.SendRecord;
+import com.jjs.zanbi.model.SendRecordExample;
 import org.apache.ibatis.annotations.Param;
 
-import com.jjs.zanbi.model.SendRecord;
+import java.util.List;
 
 public interface SendRecordMapper {
     /**

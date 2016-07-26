@@ -6,8 +6,17 @@
 #maven
 target
 
+
+#log file
+logs
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+
+# idea project
+.idea
+*.iml
 
 # Package Files #
 *.jar

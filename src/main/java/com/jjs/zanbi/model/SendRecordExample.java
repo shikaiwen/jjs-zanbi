@@ -1,4 +1,4 @@
-package com.jjs.zanbi.dao;
+package com.jjs.zanbi.model;
 
 import java.util.ArrayList;
 import java.util.Date;

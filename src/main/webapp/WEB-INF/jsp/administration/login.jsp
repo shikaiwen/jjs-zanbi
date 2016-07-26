@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%
 String base = request.getContextPath();
 %>
@@ -31,9 +32,10 @@ String base = request.getContextPath();
 	<div class="loginbox">
 		<div class="logo-a">
 			<h2>微鹰溯源管理平台</h2>
-			<c:if test="${requestScope[\"error\"] != null}"></c:if>
-			<label style="color: red;">
-			<c:out value="${requestScope[\"error\"]}"></c:out>
+
+
+
+
 			</label>
 		</div>
 		<div class="login-content">
