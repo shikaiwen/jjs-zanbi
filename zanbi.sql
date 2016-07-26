@@ -10,10 +10,25 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2016-07-26 22:19:32
+Date: 2016-07-26 22:53:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for org
+-- ----------------------------
+DROP TABLE IF EXISTS `org`;
+CREATE TABLE `org` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `org_name` varchar(255) DEFAULT NULL COMMENT '组名 如：用户组',
+  `org_manager` varchar(255) DEFAULT NULL COMMENT '组管理者  ',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of org
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for send_record
@@ -58,6 +73,8 @@ CREATE TABLE `worker` (
   `sender_id` varchar(255) NOT NULL,
   `sender_name` varchar(255) DEFAULT NULL,
   `zb_role_id` int(11) DEFAULT NULL,
+  `org_id` varchar(255) DEFAULT NULL COMMENT '所属组id',
+  `status` varchar(255) DEFAULT '1' COMMENT '状态 0：禁用 1：可用',
   PRIMARY KEY (`sender_id`),
   UNIQUE KEY `sender_id_unique_key` (`sender_id`) USING HASH
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
