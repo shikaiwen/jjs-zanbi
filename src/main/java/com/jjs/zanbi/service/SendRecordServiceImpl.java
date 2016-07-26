@@ -19,4 +19,9 @@ public class SendRecordServiceImpl implements SendRecordService{
         SendRecord sendRecord = sendRecordMapper.selectByPrimaryKey(i);
         return sendRecord;
     }
+    
+    public boolean saveRecord(SendRecord record){
+    	int count = sendRecordMapper.insertSelective(record);
+    	return count == 1;
+    }
 }

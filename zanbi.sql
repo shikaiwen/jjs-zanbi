@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2016-07-26 08:08:26
+Date: 2016-07-26 22:19:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,9 +22,10 @@ DROP TABLE IF EXISTS `send_record`;
 CREATE TABLE `send_record` (
   `id` int(11) NOT NULL,
   `sender_id` varchar(10) DEFAULT NULL,
-  `receiver_id` varchar(10) DEFAULT NULL,
-  `send_time` datetime DEFAULT NULL,
-  `remark` varchar(255) DEFAULT NULL COMMENT '这是发送时备注的原文',
+  `receiver_id` varchar(10) NOT NULL,
+  `send_time` datetime NOT NULL,
+  `remark` varchar(255) NOT NULL COMMENT '这是发送时备注的原文',
+  `sender_ip` varchar(255) DEFAULT NULL COMMENT '发送的电脑主机',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发送主记录表';
 

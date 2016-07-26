@@ -8,4 +8,6 @@ import com.jjs.zanbi.model.SendRecord;
 public interface SendRecordService {
 
     public SendRecord selectById(int i);
+ 
+    public boolean saveRecord(SendRecord record);
 }
