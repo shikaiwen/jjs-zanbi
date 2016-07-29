@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jjs.zanbi.dao.SendRecordDetailMapper">
+
+
+
+    <resultMap id="detailListMap" type="com.jjs.zanbi.model.SendRecordDetail" extends="com.jjs.zanbi.dao.SendRecordDetailMapper.BaseResultMap">
+
+        <association property="sendRecord" columnPrefix="b_" column="b_ID" resultMap="com.jjs.zanbi.dao.SendRecordMapper.BaseResultMap">
+        </association>
+
+        <association property="sender" column="SENDER_ID" javaType="com.jjs.zanbi.model.Worker" select="com.jjs.zanbi.dao.WorkerMapper.selectByPrimaryKey"></association>
+        <association property="receiver" column="RECEIVER_ID" javaType="com.jjs.zanbi.model.Worker" select="com.jjs.zanbi.dao.WorkerMapper.selectByPrimaryKey"></association>
+    </resultMap>
+
+    <!-- 联合查询主记录 -->
+    <select id="selectDetailList" resultMap="detailListMap" parameterType="com.jjs.zanbi.querybean.SendRecordQueryBean">
+        select
+        a.ID,
+        a.SENDER_ID,
+        a.RECEIVER_ID,
+        a.ZB_COUNT,
+        a.SEND_TIME,
+        a.REMARK,
+        a.SEND_MAIN_ID,
+        b.ID as b_ID,
+        b.SENDER_ID as b_SENDER_ID,
+        b.SEND_TIME as b_SEND_TIME,
+        b.REMARK as b_REMARK,
+        b.SENDER_IP as b_SENDER_IP
+        from
+        send_record_detail a
+        left join send_record b
+        on a.SEND_MAIN_ID=b.ID
+
+        <where>
+            <if test="senderId != null">a.SENDER_ID = #{senderId}</if>
+            <if test="receiverId != null">a.RECEIVER_ID = #{receiverId}</if>
+            <if test="sendTimeStart != null">a.SEND_TIME &gt;= #{sendTimeStart}</if>
+            <if test="sendTimeEnd != null">a.SEND_TIME &lt;= #{sendTimeEnd}</if>
+
+        </where>
+    </select>
+
+
+</mapper>

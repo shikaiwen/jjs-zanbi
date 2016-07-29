@@ -17,6 +17,8 @@
     <!-- umc数据源 -->
     <import resource="classpath:/datasource.xml"/>
 
+    <import resource="classpath:/spring-mvc.xml"/>
+
     <context:property-placeholder location="classpath:jdbc.properties"
                                   ignore-resource-not-found="false" />
 

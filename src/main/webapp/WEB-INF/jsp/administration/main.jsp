@@ -109,7 +109,7 @@
 		<div data-options="region:'west',split:true" title="导航菜单" style="width:150px;">
 			<div class="easyui-accordion" data-options="fit:true,border:false">
 			    <div title="产品管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('产品管理','<%=base%>/administration/product/manage.do')">
+					<a href="javascript:void(0);" onClick="addTab('明细','<%=base%>/getListPage')">
 					<img src="<%=base %>/inc/imgs/product-icon.jpg" border="0" width="60px" height="60px" /><br/>
 					产品信息管理</a><br/>
 					
