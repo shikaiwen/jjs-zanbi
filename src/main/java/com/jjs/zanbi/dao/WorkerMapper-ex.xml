@@ -3,50 +3,34 @@
 <mapper namespace="com.jjs.zanbi.dao.WorkerMapper" >
 
 
-<!--    <select id="selectByPage" parameterType="com.jjs.zanbi.model.WorkerExample" resultMap="BaseResultMap">
+    <resultMap id="selectByPageExample" type="com.jjs.zanbi.model.Worker" extends="com.jjs.zanbi.dao.WorkerMapper.Base_Column_List">
 
-        select
+        <association property="org_id" columnPrefix="b_"></association>
 
-
-        <include  refid="Base_Column_List" />
-
-
-        from worker a
-
-        left join
-
-        org
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause" />
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>-->
-
-    <select id="selectEx" resultType="map">
-        SELECT
-
-        a.*,
+    </resultMap>
 
 
-        <include refid="com.jjs.zanbi.dao.OrgMapper">
-            <property name="alias" value="a"></property>
-            <property name="prefix" value="a"></property>
-        </include>
+    <select id="selectByPage">
+        select a.*,
 
+          <include refid="com.jjs.zanbi.dao.OrgMapper.base_column_with_alias">
+              <property name="alias" value="b"></property>
+              <property name="prefix" value="b_"></property>
+          </include>
 
-        from worker a
-        left join
+         from worker
+        left join org on a.org_id = b.id
     </select>
+
+
 
 <sql id="base_ex">
 
-${alias}.id   		 ${prefix}_id,
-${alias}.worker_id   		 ${prefix}_worker_id,
-${alias}.name   		 ${prefix}_name,
-${alias}.zb_role_id   		 ${prefix}_zb_role_id,
-${alias}.org_id   		 ${prefix}_org_id,
-${alias}.status   		 ${prefix}_status
+    ${alias}.id   		 ${prefix}id,
+    ${alias}.worker_id   		 ${prefix}worker_id,
+    ${alias}.name   		 ${prefix}name,
+    ${alias}.zb_role_id   		 ${prefix}zb_role_id,
+    ${alias}.org_id   		 ${prefix}org_id,
+    ${alias}.status   		 ${prefix}status
 </sql>
 </mapper>

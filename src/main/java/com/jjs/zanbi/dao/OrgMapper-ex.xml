@@ -5,7 +5,10 @@
 
 
     <sql id="base_column_with_alias">
-            id, org_name, org_manager, type
+        #{alias}.id  as 		 #{alias}id,
+        #{alias}.org_name  as 		 #{alias}org_name,
+        #{alias}.org_manager  as 		 #{alias}org_manager,
+        #{alias}.type  as 		 #{alias}_type
     </sql>
 
 

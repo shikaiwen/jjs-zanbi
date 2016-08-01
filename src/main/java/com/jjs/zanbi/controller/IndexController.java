@@ -48,6 +48,10 @@ public class IndexController {
         return map;
     }
 
+
+
+
+
     /**
      * 人员表
      * @param queryBean
@@ -56,7 +60,7 @@ public class IndexController {
     @RequestMapping("getWorkerListPage")
     public ModelAndView workerListPage(SendRecordQueryBean queryBean){
 
-        ModelAndView mav = new ModelAndView("worker-list");
+        ModelAndView mav = new ModelAndView("administration/worker-list");
 
         return mav;
     }

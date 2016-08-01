@@ -32,6 +32,9 @@ public interface WorkerService {
      */
     public PageInfo<List<Worker>> selectByPage(WorkerQueryBean queryBean);
 
+    public boolean addWorker(Worker worker);
+
+
 
 
 }

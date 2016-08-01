@@ -113,7 +113,7 @@
 					<img src="<%=base %>/inc/imgs/product-icon.jpg" border="0" width="60px" height="60px" /><br/>
 					产品信息管理</a><br/>
 					
-					<a href="javascript:void(0);" onClick="addTab('公司信息管理','<%=base%>/productCompanyController/index.do')">
+					<a href="javascript:void(0);" onClick="addTab('公司信息管理','<%=base%>/getWorkerListPage')">
 					<img src="<%=base %>/inc/imgs/company.png" border="0" width="60px" height="60px" /><br/>
 					公司信息管理</a>
 				</div>

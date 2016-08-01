@@ -32,14 +32,22 @@ public class WorkerServiceImpl implements WorkerService {
 
         Worker worker = workerMapper.selectByPrimaryKey(senderId);
 
-
         return worker;
     }
 
     //包含机构信息
     public PageInfo<List<Worker>> selectByPage(WorkerQueryBean queryBean) {
 
+        List<Worker> workerList =  workerMapper.selectByPage(queryBean);
 
-        return null;
+        PageInfo<List<Worker>> pageInfo = new PageInfo(workerList);
+        return pageInfo;
     }
+
+    public boolean addWorker(Worker worker) {
+        int i = workerMapper.insertSelective(worker);
+        return i == 1;
+    }
+
+
 }
