@@ -1,9 +1,11 @@
 package com.jjs.zanbi.service;
 
 import com.jjs.zanbi.dao.SendRecordMapper;
-import com.jjs.zanbi.model.*;
+import com.jjs.zanbi.model.SendRecord;
+import com.jjs.zanbi.model.SendRecordDetail;
+import com.jjs.zanbi.model.Worker;
+import com.jjs.zanbi.model.ZbRole;
 import com.jjs.zanbi.utils.CommResult;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Administrator on 2016/7/26.
@@ -131,62 +131,62 @@ public class SendRecordServiceImpl implements SendRecordService {
     public int selectSendCountByMonth(int senderId,Date date){
 
 
-        int total = 0;
-        SendRecordDetailExample detailExample = new SendRecordDetailExample();
-        SendRecordDetailExample.Criteria criteria = detailExample.createCriteria();
+//        int total = 0;
+//        SendRecordDetailExample detailExample = new SendRecordDetailExample();
+//        SendRecordDetailExample.Criteria criteria = detailExample.createCriteria();
+//
+//        criteria.andSenderIdEqualTo(senderId);
+//
+//        Calendar nextMonth = Calendar.getInstance(Locale.CHINESE);
+//        nextMonth.setTime(date);
+//        nextMonth.add(Calendar.MONTH, 1);
+//
+//
+//        criteria.andSendTimeBetween(date, nextMonth.getTime());
+//
+//        List<SendRecordDetail> detailList = sendRecordDetailService.selectRecrodDetailByExample(detailExample);
+//
+//        if (CollectionUtils.isEmpty(detailList)) {
+//            return total;
+//        }
+//
+//
+//        for (SendRecordDetail sendRecordDetail : detailList) {
+//            total += sendRecordDetail.getZbCount();
+//        }
 
-        criteria.andSenderIdEqualTo(senderId);
 
-        Calendar nextMonth = Calendar.getInstance(Locale.CHINESE);
-        nextMonth.setTime(date);
-        nextMonth.add(Calendar.MONTH, 1);
-
-
-        criteria.andSendTimeBetween(date, nextMonth.getTime());
-
-        List<SendRecordDetail> detailList = sendRecordDetailService.selectRecrodDetailByExample(detailExample);
-
-        if (CollectionUtils.isEmpty(detailList)) {
-            return total;
-        }
-
-
-        for (SendRecordDetail sendRecordDetail : detailList) {
-            total += sendRecordDetail.getZbCount();
-        }
-
-
-        return total;
+        return 0;
     }
 
 
     public int selectReceiveCountByMonth(int receiverId,Date date) {
 
-        int total = 0;
-        SendRecordDetailExample detailExample = new SendRecordDetailExample();
-        SendRecordDetailExample.Criteria criteria = detailExample.createCriteria();
+//        int total = 0;
+//        SendRecordDetailExample detailExample = new SendRecordDetailExample();
+//        SendRecordDetailExample.Criteria criteria = detailExample.createCriteria();
+//
+//        criteria.andReceiverIdEqualTo(receiverId);
+//
+//        Date currentMonth = Calendar.getInstance(Locale.CHINESE).getTime();
+//
+//        Calendar nextMonth = Calendar.getInstance(Locale.CHINESE);
+//        nextMonth.add(Calendar.MONTH, 1);
+//
+//        criteria.andSendTimeBetween(currentMonth, nextMonth.getTime());
+//
+//        List<SendRecordDetail> detailList = sendRecordDetailService.selectRecrodDetailByExample(detailExample);
+//
+//        if (CollectionUtils.isEmpty(detailList)) {
+//            return total;
+//        }
+//
+//
+//        for (SendRecordDetail sendRecordDetail : detailList) {
+//            total += sendRecordDetail.getZbCount();
+//        }
 
-        criteria.andReceiverIdEqualTo(receiverId);
-
-        Date currentMonth = Calendar.getInstance(Locale.CHINESE).getTime();
-
-        Calendar nextMonth = Calendar.getInstance(Locale.CHINESE);
-        nextMonth.add(Calendar.MONTH, 1);
-
-        criteria.andSendTimeBetween(currentMonth, nextMonth.getTime());
-
-        List<SendRecordDetail> detailList = sendRecordDetailService.selectRecrodDetailByExample(detailExample);
-
-        if (CollectionUtils.isEmpty(detailList)) {
-            return total;
-        }
-
-
-        for (SendRecordDetail sendRecordDetail : detailList) {
-            total += sendRecordDetail.getZbCount();
-        }
-
-        return total;
+        return 0;
     }
 
 }

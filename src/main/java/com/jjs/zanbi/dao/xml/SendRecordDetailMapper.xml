@@ -1,6 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jjs.zanbi.dao.SendRecordDetailMapper">
+  <resultMap id="BaseResultMap" type="com.jjs.zanbi.model.SendRecordDetail">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="receiver_id" jdbcType="INTEGER" property="receiverId" />
+    <result column="zb_count" jdbcType="INTEGER" property="zbCount" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="send_main_id" jdbcType="INTEGER" property="sendMainId" />
+  </resultMap>
+
 
 
 
@@ -14,20 +27,13 @@
     </resultMap>
 
     <!-- 联合查询主记录 -->
-    <select id="selectDetailList" resultMap="detailListMap" parameterType="com.jjs.zanbi.querybean.SendRecordQueryBean">
+    <select id="selectByPage" resultMap="detailListMap" parameterType="com.jjs.zanbi.querybean.SendRecordQueryBean">
         select
-        a.ID,
-        a.SENDER_ID,
-        a.RECEIVER_ID,
-        a.ZB_COUNT,
-        a.SEND_TIME,
-        a.REMARK,
-        a.SEND_MAIN_ID,
-        b.ID as b_ID,
-        b.SENDER_ID as b_SENDER_ID,
-        b.SEND_TIME as b_SEND_TIME,
-        b.REMARK as b_REMARK,
-        b.SENDER_IP as b_SENDER_IP
+        a.*,
+          <include refid="com.jjs.zanbi.dao.SendRecordMapper.base_column_with_alias">
+              <property name="alias" value="b"></property>
+              <property name="prefix" value="b_"></property>
+          </include>
         from
         send_record_detail a
         left join send_record b
@@ -41,6 +47,11 @@
 
         </where>
     </select>
+
+
+
+
+
 
 
 </mapper>

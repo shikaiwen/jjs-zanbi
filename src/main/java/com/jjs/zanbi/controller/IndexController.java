@@ -42,7 +42,7 @@ public class IndexController {
     @ResponseBody
     public Object listPage(SendRecordQueryBean queryBean){
 
-        PageInfo<List<SendRecordDetail>> pageInfo = recordDetailService.selectDetailList(queryBean);
+        PageInfo<List<SendRecordDetail>> pageInfo = recordDetailService.selectByPage(queryBean);
 
         Map map = WebUtils.getEasyUiPageData(pageInfo);
         return map;
@@ -69,7 +69,7 @@ public class IndexController {
     @ResponseBody
     public Object workerListData(SendRecordQueryBean queryBean){
 
-        PageInfo<List<SendRecordDetail>> pageInfo = recordDetailService.selectDetailList(queryBean);
+        PageInfo<List<SendRecordDetail>> pageInfo = recordDetailService.selectByPage(queryBean);
 
         Map map = WebUtils.getEasyUiPageData(pageInfo);
         return map;

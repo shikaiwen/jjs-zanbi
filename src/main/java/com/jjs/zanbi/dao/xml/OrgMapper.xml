@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjs.zanbi.dao.OrgMapper">
+  <resultMap id="BaseResultMap" type="com.jjs.zanbi.model.Org">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="org_manager" jdbcType="VARCHAR" property="orgManager" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+
+
+    <sql id="base_column_with_alias">
+        ${alias}.id  as 		 ${prefix}id,
+        ${alias}.org_name  as 		 ${prefix}org_name,
+        ${alias}.org_manager  as 		 ${prefix}org_manager,
+        ${alias}.type  as 		 ${prefix}type
+    </sql>
+
+
+</mapper>

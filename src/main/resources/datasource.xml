@@ -43,16 +43,22 @@
         <property name="configLocation" value="classpath:mybatis-settings.xml" />
         <property name="mapperLocations">
             <list>
-                <value>classpath:com/jjs/zanbi/dao/*.xml</value>
+                <value>classpath:com/jjs/zanbi/dao/xml/*.xml</value>
             </list>
         </property>
     </bean>
-
     <!-- 注入项目的所有DAO -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"></bean>-->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <property name="basePackage" value="com.jjs.zanbi.dao" />
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>
     </bean>
+
 
     <!--由spring管理mybatis的事务 -->
     <bean id="txManager"

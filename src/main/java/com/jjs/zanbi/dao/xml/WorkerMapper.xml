@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjs.zanbi.dao.WorkerMapper">
+  <resultMap id="BaseResultMap" type="com.jjs.zanbi.model.Worker">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="worker_id" jdbcType="VARCHAR" property="workerId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="zb_role_id" jdbcType="INTEGER" property="zbRoleId" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+
+
+
+
+
+    <resultMap id="selectByPageResultMap" type="com.jjs.zanbi.model.Worker" extends="BaseResultMap">
+        <!--javaType="com.jjs.zanbi.model.Org"-->
+        <association property="org" columnPrefix="b_"  resultMap="com.jjs.zanbi.dao.OrgMapper.BaseResultMap"></association>
+
+    </resultMap>
+
+
+    <select id="selectByPage" parameterType="com.jjs.zanbi.querybean.WorkerQueryBean" resultMap="selectByPageResultMap">
+        select a.*,
+
+        <include refid="com.jjs.zanbi.dao.OrgMapper.base_column_with_alias">
+            <property name="alias" value="b"></property>
+            <property name="prefix" value="b_"></property>
+        </include>
+
+        from worker a
+        left join org b
+        on a.org_id = b.id
+    </select>
+
+
+
+    <sql id="base_column_with_alias">
+
+        ${alias}.ID as ${prefix}ID,
+        ${alias}.WORKER_ID as ${prefix}WORKER_ID,
+        ${alias}.NAME as ${prefix}NAME,
+        ${alias}.ZB_ROLE_ID as ${prefix}ZB_ROLE_ID,
+        ${alias}.ORG_ID as ${prefix}ORG_ID,
+        ${alias}.STATUS as ${prefix}STATUS
+
+    </sql>
+
+
+
+
+</mapper>

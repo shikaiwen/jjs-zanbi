@@ -43,9 +43,9 @@ public class SendRecordServiceTest {
     public void queryByPageTest(){
 
         SendRecordQueryBean queryBean = new SendRecordQueryBean();
-        queryBean.setSenderId("1");
+//        queryBean.setSenderId("1");
 
-        PageInfo<List<SendRecordDetail>> pageInfo = sendRecordDetailService.selectDetailList(queryBean);
+        PageInfo<List<SendRecordDetail>> pageInfo = sendRecordDetailService.selectByPage(queryBean);
 
         System.out.println(JSON.toJSONString(pageInfo, SerializerFeature.DisableCircularReferenceDetect));
 

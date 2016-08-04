@@ -3,7 +3,6 @@ package com.jjs.zanbi.service;
 import com.github.pagehelper.PageInfo;
 import com.jjs.zanbi.dao.WorkerMapper;
 import com.jjs.zanbi.model.Worker;
-import com.jjs.zanbi.model.WorkerExample;
 import com.jjs.zanbi.querybean.WorkerQueryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,22 +25,21 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     public Worker selectWorkerBySenderId(int senderId) {
-        WorkerExample example = new WorkerExample();
-        WorkerExample.Criteria criteria = example.createCriteria();
-        criteria.andIdEqualTo(senderId);
+//        WorkerExample example = new WorkerExample();
+//        WorkerExample.Criteria criteria = example.createCriteria();
+//        criteria.andIdEqualTo(senderId);
+//
+//        Worker worker = workerMapper.selectByPrimaryKey(senderId);
 
-        Worker worker = workerMapper.selectByPrimaryKey(senderId);
-
-        return worker;
+        return null;
     }
 
     //包含机构信息
     public PageInfo<List<Worker>> selectByPage(WorkerQueryBean queryBean) {
 
-        List<Worker> workerList =  workerMapper.selectByPage(queryBean);
+        List<Worker> workerList = workerMapper.selectByPage(queryBean);
 
-        PageInfo<List<Worker>> pageInfo = new PageInfo(workerList);
-        return pageInfo;
+        return new PageInfo(workerList);
     }
 
     public boolean addWorker(Worker worker) {
