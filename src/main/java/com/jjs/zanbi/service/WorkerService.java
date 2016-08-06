@@ -35,6 +35,7 @@ public interface WorkerService {
     public boolean addWorker(Worker worker);
 
 
+    public boolean deleteByPrimaryKey(int id);
 
 
 }

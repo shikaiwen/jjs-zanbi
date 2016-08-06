@@ -84,15 +84,15 @@ function toDelete(){
 }
 
 
-function add(){	
-	var dialog = createDialog("addInventoryDg","<%=base%>/inventoryController/goAdd.do","添加库存",addCallback );
-	//$(dialog).dialog('setTitle','添加理财客户');
-	//$('#dlg').form('clear');
-}	
+function add(){
+    var dialog = createDialog("addInventoryDg","<%=base%>/inventoryController/goAdd.do","添加库存",addCallback );
+    //$(dialog).dialog('setTitle','添加理财客户');
+    //$('#dlg').form('clear');
+}
 
 function addCallback(dialog){
-	$(dialog).dialog("close");
-	$(dd).datagrid("reload");
+    $(dialog).dialog("close");
+    $(dd).datagrid("reload");
 }
 
 

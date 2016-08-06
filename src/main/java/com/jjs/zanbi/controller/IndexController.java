@@ -37,7 +37,6 @@ public class IndexController {
     }
 
 
-
     @RequestMapping("listData")
     @ResponseBody
     public Object listPage(SendRecordQueryBean queryBean){
@@ -49,42 +48,15 @@ public class IndexController {
     }
 
 
-
-
-
-    /**
-     * 人员表
-     * @param queryBean
-     * @return
-     */
-    @RequestMapping("getWorkerListPage")
-    public ModelAndView workerListPage(SendRecordQueryBean queryBean){
-
-        ModelAndView mav = new ModelAndView("administration/worker-list");
-
-        return mav;
-    }
-
-    @RequestMapping("workerListData")
-    @ResponseBody
-    public Object workerListData(SendRecordQueryBean queryBean){
-
-        PageInfo<List<SendRecordDetail>> pageInfo = recordDetailService.selectByPage(queryBean);
-
-        Map map = WebUtils.getEasyUiPageData(pageInfo);
-        return map;
-    }
-
-
     @RequestMapping("draw")
     public ModelAndView  draw(){
-        ModelAndView mv = new ModelAndView("administration/front/draw");
+        ModelAndView mv = new ModelAndView("front/draw");
         return mv;
     }
 
     @RequestMapping("test")
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("administration/login");
+        ModelAndView mv = new ModelAndView("login");
 
         return mv;
 
@@ -92,7 +64,7 @@ public class IndexController {
 
     @RequestMapping("main")
     public ModelAndView main() {
-        ModelAndView mv = new ModelAndView("administration/main");
+        ModelAndView mv = new ModelAndView("main");
         return mv;
 
     }

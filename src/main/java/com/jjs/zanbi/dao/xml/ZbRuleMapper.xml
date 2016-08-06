@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jjs.zanbi.dao.ZbRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.jjs.zanbi.model.ZbRule" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="zb_count" property="zbCount" jdbcType="INTEGER" />
+    <result column="zb_compute_type" property="zbComputeType" jdbcType="VARCHAR" />
+    <result column="calculate" property="calculate" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

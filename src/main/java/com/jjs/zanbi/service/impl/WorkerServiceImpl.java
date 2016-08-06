@@ -1,9 +1,10 @@
-package com.jjs.zanbi.service;
+package com.jjs.zanbi.service.impl;
 
 import com.github.pagehelper.PageInfo;
 import com.jjs.zanbi.dao.WorkerMapper;
 import com.jjs.zanbi.model.Worker;
 import com.jjs.zanbi.querybean.WorkerQueryBean;
+import com.jjs.zanbi.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,11 @@ public class WorkerServiceImpl implements WorkerService {
     public boolean addWorker(Worker worker) {
         int i = workerMapper.insertSelective(worker);
         return i == 1;
+    }
+
+    public boolean deleteByPrimaryKey(int id) {
+        int count = workerMapper.deleteByPrimaryKey(id);
+        return count == 1;
     }
 
 

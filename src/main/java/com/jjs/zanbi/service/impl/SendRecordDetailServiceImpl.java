@@ -1,4 +1,4 @@
-package com.jjs.zanbi.service;
+package com.jjs.zanbi.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -6,6 +6,7 @@ import com.jjs.zanbi.dao.OrgMapper;
 import com.jjs.zanbi.dao.SendRecordDetailMapper;
 import com.jjs.zanbi.model.SendRecordDetail;
 import com.jjs.zanbi.querybean.SendRecordQueryBean;
+import com.jjs.zanbi.service.SendRecordDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,6 @@ public class SendRecordDetailServiceImpl implements SendRecordDetailService {
         int count = detailMapper.insertSelective(recordDetail);
         return count == 1;
     }
-
 
 
     public PageInfo<List<SendRecordDetail>> selectByPage(SendRecordQueryBean queryBean) {

@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Table(name = "worker")
 public class Worker {
 
-
     @Transient private Org org;
+    @Transient private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +21,6 @@ public class Worker {
     private String name;
 
     /**
-     * 默认普通成员
-     */
-    @Column(name = "zb_role_id")
-    private Integer zbRoleId;
-
-    /**
      * 所属组id
      */
     @Column(name = "org_id")
@@ -36,6 +30,12 @@ public class Worker {
      * 状态 0：禁用 1：可用
      */
     private String status;
+
+    /**
+     * 角色id
+     */
+    @Column(name = "role_id")
+    private Integer roleId;
 
     /**
      * @return id
@@ -84,24 +84,6 @@ public class Worker {
     }
 
     /**
-     * 获取默认普通成员
-     *
-     * @return zb_role_id - 默认普通成员
-     */
-    public Integer getZbRoleId() {
-        return zbRoleId;
-    }
-
-    /**
-     * 设置默认普通成员
-     *
-     * @param zbRoleId 默认普通成员
-     */
-    public void setZbRoleId(Integer zbRoleId) {
-        this.zbRoleId = zbRoleId;
-    }
-
-    /**
      * 获取所属组id
      *
      * @return org_id - 所属组id
@@ -137,6 +119,24 @@ public class Worker {
         this.status = status;
     }
 
+    /**
+     * 获取角色id
+     *
+     * @return role_id - 角色id
+     */
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    /**
+     * 设置角色id
+     *
+     * @param roleId 角色id
+     */
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     public Org getOrg() {
         return org;
     }
@@ -144,4 +144,15 @@ public class Worker {
     public void setOrg(Org org) {
         this.org = org;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+
+
 }

@@ -31,6 +31,7 @@ public class WorkerServiceTest {
     public void test(){
 
         WorkerQueryBean queryBean = new WorkerQueryBean();
+        queryBean.setOrgId(3);
         PageInfo<List<Worker>> listPageInfo = workerService.selectByPage(queryBean);
 
         System.out.println(listPageInfo);

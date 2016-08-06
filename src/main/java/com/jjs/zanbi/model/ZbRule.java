@@ -2,14 +2,14 @@ package com.jjs.zanbi.model;
 
 import javax.persistence.*;
 
-@Table(name = "zb_role")
-public class ZbRole {
+@Table(name = "zb_rule")
+public class ZbRule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "role_name")
-    private String roleName;
+    @Column(name = "rule_name")
+    private String ruleName;
 
     @Column(name = "zb_count")
     private Integer zbCount;
@@ -39,18 +39,13 @@ public class ZbRole {
         this.id = id;
     }
 
-    /**
-     * @return role_name
-     */
-    public String getRoleName() {
-        return roleName;
+
+    public String getRuleName() {
+        return ruleName;
     }
 
-    /**
-     * @param roleName
-     */
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
     }
 
     /**

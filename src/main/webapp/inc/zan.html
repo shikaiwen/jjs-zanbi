@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <script src="js/jquery.js"></script>
+<script type="text/javascript">
 
+
+</script>
 <style>
 
 	#container{
@@ -56,10 +60,96 @@
 		font-size: 16px;
 		line-height: 30px;
 	}
+
+    #searchDiv{
+
+    }
+    #searchDiv ul{
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    }
+
+    #searchDiv li{
+
+    }
+
+    #searchDiv li a{
+        text-decoration:none;
+        color:#000000;
+        width:100%;
+        height:100%;
+        display:block;
+    }
+
+    #searchDiv li a:hover{
+
+        color: #ffffff;
+        background-color:#474752;
+    }
 </style>
 </head>
 <body>
 
+
+<script>
+
+//    $.ajax({
+//        type: "POST",
+//        dataType: "json",
+//        url: rootPath+"/myHouse/getLpName",  //获取楼盘名称
+//        data:{"lpName":zfKeywords },
+//        success: function(data){
+//            $(parentObj).find("ul li").remove();
+//            var lpList = data.data.lpList;
+//            $.each(lpList,function(i, item){
+//                $(parentObj).find("ul").append("<li><a href='javascript:;' selectid='"+item.id+"'>"+item.name+"</a></li>");
+//            });
+//        },
+//        error:function(XmlHttpRequest,textStatus, errorThrown)
+//        {
+//            art.dialog({icon: "error",content: "获取数据失败！", lock: true, time: 3});
+//        }
+//    });
+
+
+
+    $(function(){
+
+//        bindSearch();
+        bindKeyEvent();
+
+        $("#searchDiv").find("ul").delegate("a","click",function(){
+
+            alert('me');
+            $("#searchDiv").hide();
+
+        });
+    });
+
+
+    function bindKeyEvent(){
+
+        //按键事件
+        $("input[name='toWhoInput']").on("input",function(event){
+
+            $("#searchDiv").css("display", "block");
+        });
+
+
+
+
+    }
+
+    function bindSearch(){
+
+
+
+
+    }
+
+</script>
 <div id="container">
 	
 	<div id="content">
@@ -72,14 +162,30 @@
 			<div class="itemDiv">
 				<div>1、发送人：</div>
 				
-				<textarea style="margin-top: 15px; margin-left: 10px;" rows="1" cols="80"></textarea>
+				<input size="80" style="margin-top: 15px; margin-left: 10px;" />
 				
 			</div>
 			
 			
 			<div class="itemDiv">
-				<div>2、发给谁：</div>
-				<textarea style="margin-top: 15px; margin-left: 10px;" rows="1" cols="80"></textarea>
+				<div>2、toWho：</div>
+
+
+				<input size="80" name="toWhoInput" style="margin-top: 15px; margin-left: 10px;"/>
+
+                <div id="d_tag2"><span title="单击删除该标签">什么东东</span><span title="单击删除该标签">地方</span></div>
+
+                <div id="searchDiv" style="display:none;width:100px;height:300px;border:1px solid red;">
+
+                    <ul>
+                        <li><a href="javascript:;">民大</a></li>
+                        <li><a href="javascript:;">民大</a></li>
+                        <li><a href="javascript:;">民大</a></li>
+                        <li><a href="javascript:;">民大</a></li>
+                        <li><a href="javascript:;">民大</a></li>
+                        <li><a href="javascript:;">民大</a></li>
+                    </ul>
+                </div>
 			</div>
 			
 			

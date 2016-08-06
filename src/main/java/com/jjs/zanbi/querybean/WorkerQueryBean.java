@@ -5,4 +5,13 @@ package com.jjs.zanbi.querybean;
  */
 public class WorkerQueryBean extends QueryBean {
 
+    private Integer orgId;
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+    }
 }

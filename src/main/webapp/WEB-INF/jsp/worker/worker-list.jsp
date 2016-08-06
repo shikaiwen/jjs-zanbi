@@ -15,15 +15,15 @@
 
         $(function () {
             dd = $("#inventoryDg").datagrid({
-                title: '入库记录表',
-                url: '<%=base%>/listData',
+                title: '人员列表',
+                url: '<%=base%>/worker/listData',
                 iconCls: 'icon-list',
                 pageList: [15, 20, 25, 30],
                 pageSize: 15,
                 width: getWidth(1),
                 height: getHeight(1),
                 resizable: true,
-                //	singleSelect:true,
+                singleSelect:true,
                 //selectOnCheck:true,
                 autoRowHeight: false,
                 striped: true,
@@ -34,53 +34,50 @@
                 toolbar: '#toolbar',
                 columns: [[
                     {field: 'ck', checkbox: true},
-                    {field: "productId", title: '产品id', name: 'productId', align: 'center', width: 150, hidden: true},
                     {field: 'id', title: 'id', name: 'id', align: 'center', width: 150},
-                    {field: 'senderId', title: 'senderId', name: 'senderId', align: 'center', width: 100},
-                    {field: 'receiverId', title: 'receiverId', name: 'receiverId', align: 'center', width: 100},
-                    {field: 'sendTime', title: 'sendTime', name: 'sendTime', align: 'center', width: 180},
+                    {field: "name", title: 'name', name: 'name', align: 'center', width: 150},
                     {
-                        field: "senderOrg",
-                        title: 'senderOrg',
-                        name: 'senderOrg',
+                        field: "orgName",
+                        title: 'orgName',
+                        name: 'orgName',
                         align: 'center',
                         width: 150,
                         formatter: function (val, row) {
-                            return row.receiver.org.orgName;
+                            return row.org.orgName;
                         }
                     },
                     {
-                        field: "sender",
-                        title: 'sender',
-                        name: 'sender',
+                        field: "roleName",
+                        title: 'roleName',
+                        name: 'roleName',
                         align: 'center',
                         width: 150,
                         formatter: function (val, row) {
-                            return row.sender.name;
-                        }
-                    },
-                    {
-                        field: "receiverOrg",
-                        title: 'receiverOrg',
-                        name: 'receiverOrg',
-                        align: 'center',
-                        width: 150,
-                        formatter: function (val, row) {
-                            return row.receiver.org.orgName;
-                        }
-                    },
-                    {
-                        field: "receiver",
-                        title: 'receiver',
-                        name: 'receiver',
-                        align: 'center',
-                        width: 150,
-                        formatter: function (val, row) {
-                            return row.receiver.name;
+                            return row.role.roleName;
                         }
                     },
 
-                    {field: 'remark', title: 'remark', name: 'remark', align: 'center', width: 200},
+                    {
+                        field: "zbCount",
+                        title: 'zbCount',
+                        name: 'zbCount',
+                        align: 'center',
+                        width: 150,
+                        formatter: function (val, row) {
+
+                            var rule = row.role.zbRule;
+
+                            if(rule.zbComputeType == 1){
+                                return rule.zbCount ;
+                            }
+
+                            if(rule.zbComputeType == 2) {
+                                return rule.calculate;
+                            }
+
+                            return ;
+                        }
+                    },
 
                 ]],
                 pagination: true
@@ -99,7 +96,7 @@
 
 
         function chooseProduct(){
-//	alertMsg("成功了");
+
             var data = {callback:function(datas){
                 $("#productId").val(datas['productId']);
                 $("#productName").val(datas['productName']);
@@ -111,6 +108,44 @@
                 height:300,
                 data:data
             });
+        }
+
+
+        function add(){
+            var dialog = createDialog("addInventoryDg","<%=base%>/worker/goAdd","添加库存",addCallback,500,300 );
+            //$(dialog).dialog('setTitle','添加理财客户');
+            //$('#dlg').form('clear');
+        }
+
+        function addCallback(dialog){
+            $(dialog).dialog("close");
+            $(dd).datagrid("reload");
+        }
+
+
+        function toQuery(){
+            var jsonObj  = getAllInputData($("#condition"));
+            dd.datagrid("options").queryParams = jsonObj;
+            dd.datagrid('load');
+        }
+
+
+        function toDelete(){
+            var rows = $('#inventoryDg').datagrid('getSelections');
+            if(rows.length != 1){
+                $.messager.alert("提示","请选择一条数据");return;
+            }else{
+                $.messager.confirm('确认','确定要删除这条数据吗?',function(r){
+                    if ( !r ) return;
+                    var id = rows[0]['id'];
+                    $.post('<%=base%>/worker/doDelete',{"id":id},function(data){
+                        if("ok" == data){
+                            showMsg("操作成功!");
+                        }
+                        dd = $("#inventoryDg").datagrid("reload");
+                    });
+                });
+            }
         }
 
 
@@ -127,21 +162,15 @@
 <div id="toolbar">
     <div>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">添加</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-           onclick="update()">修改</a>
+        <%--<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"--%>
+           <%--onclick="update()">修改</a>--%>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="toDelete()">删除</a>
 
         <div id="condition">
-            <a style="padding-left: 21px;">产品：</a>
-            <input type="text"  size="5" name="productName" id="productName"/>
-            <input type="hidden" disabled size="5" name="productId" id="productId"/>
-            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search"
-            onclick="chooseProduct()">选择产品</a>
+            <a style="padding-left: 21px;">所属组：</a>
+            <select name="orgId">${orgSelectHtml}</select>
 
-            <a style="padding-left: 21px;">：</a>
-
-
-            <a href="javascript:void(0);" style="margin-left:400px;" class="easyui-linkbutton" iconCls="icon-search"
+            <a href="javascript:void(0);" style="margin-left:40px;" class="easyui-linkbutton" iconCls="icon-search"
                onclick="toQuery()">查询</a>
         </div>
     </div>

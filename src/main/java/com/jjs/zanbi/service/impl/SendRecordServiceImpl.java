@@ -1,10 +1,14 @@
-package com.jjs.zanbi.service;
+package com.jjs.zanbi.service.impl;
 
 import com.jjs.zanbi.dao.SendRecordMapper;
 import com.jjs.zanbi.model.SendRecord;
 import com.jjs.zanbi.model.SendRecordDetail;
 import com.jjs.zanbi.model.Worker;
-import com.jjs.zanbi.model.ZbRole;
+import com.jjs.zanbi.model.ZbRule;
+import com.jjs.zanbi.service.SendRecordDetailService;
+import com.jjs.zanbi.service.SendRecordService;
+import com.jjs.zanbi.service.WorkerService;
+import com.jjs.zanbi.service.ZbRoleService;
 import com.jjs.zanbi.utils.CommResult;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,10 +108,10 @@ public class SendRecordServiceImpl implements SendRecordService {
     public int getAllowSendCount(int senderId) {
 
         Worker worker = workerService.selectWorkerBySenderId(senderId);
-        int zbRoleId = worker.getZbRoleId();
-        ZbRole zbRole = zbRoleService.selectZbRoleById(zbRoleId);
+        int zbRoleId = 5 ;
+        ZbRule zbRule = zbRoleService.selectZbRoleById(zbRoleId);
 
-        int roleCount = zbRole.getZbCount();
+        int roleCount = zbRule.getZbCount();
 
         Calendar cal = Calendar.getInstance();
 
