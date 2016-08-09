@@ -6,7 +6,8 @@ import javax.persistence.*;
 public class Role {
 
 
-    @Transient ZbRule zbRule;
+    @Transient
+    ZbRule zbRule;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -115,4 +116,6 @@ public class Role {
     public void setZbRule(ZbRule zbRule) {
         this.zbRule = zbRule;
     }
+
+
 }

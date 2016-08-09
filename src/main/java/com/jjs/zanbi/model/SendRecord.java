@@ -12,6 +12,13 @@ public class SendRecord {
     @Column(name = "sender_id")
     private Integer senderId;
 
+    @Column(name = "is_qa_prize")
+    private Integer isQaPrize;
+
+    @Column(name = "is_pro_prize")
+    private Integer getIsQaPrize;
+
+
     @Column(name = "send_time")
     private Date sendTime;
 
@@ -102,5 +109,21 @@ public class SendRecord {
      */
     public void setSenderIp(String senderIp) {
         this.senderIp = senderIp;
+    }
+
+    public Integer getIsQaPrize() {
+        return isQaPrize;
+    }
+
+    public void setIsQaPrize(Integer isQaPrize) {
+        this.isQaPrize = isQaPrize;
+    }
+
+    public Integer getGetIsQaPrize() {
+        return getIsQaPrize;
+    }
+
+    public void setGetIsQaPrize(Integer getIsQaPrize) {
+        this.getIsQaPrize = getIsQaPrize;
     }
 }

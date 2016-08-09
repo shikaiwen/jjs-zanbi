@@ -85,7 +85,7 @@
 		<div id="northArea" data-options="region:'north',split:true" style="height:90px;">
               <table width="100%">
               	<tr>
-				   <td><h1 style="margin-left: 52px; margin-top: 16px;">微鹰溯源管理平台</h1></td>
+				   <td><h1 style="margin-left: 52px; margin-top: 16px;">XXX</h1></td>
 				   <td style="width: 15%;"><p style="padding-top:25px; line-height:150%;"><span style=" visibility: hidden;">欢迎您！</span><br/>
 				    
 				   <a icon="icon-panel" class="easyui-menubutton" style="font-size: small;font-family: inherit; visibility: hidden;" href="#" menu="#panel-menu">控制面板</a>
@@ -118,39 +118,7 @@
 					公司信息管理</a>
 				</div>
 		
-				<div title="溯源信息管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('溯源信息管理','<%=base%>/administration/su/manage.do')">
-					<img src="<%=base %>/inc/imgs/suyuan-icon.jpg" border="0" width="60px" height="60px" /><br/>
-					溯源信息管理</a><br/>
-				</div>
-				
-				<div title="产品发布管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('发布信息查询','<%=base%>/administration/publishProduct/manage.do')">
-					<img src="<%=base %>/inc/imgs/fabu-icon.jpg" border="0" width="60px" height="60px" /><br/>
-					发布信息查询
-					</a>
-				</div>
-				
-				<div title="库存管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('库存记录维护','<%=base%>/inventoryController/index.do')">
-					<img src="<%=base %>/inc/imgs/kucun-icon.jpg" border="0" width="60px" height="60px" /><br/>
-					库存记录维护
-					</a>
-				</div>
-				
-				<div title="标签管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('标签模板管理','<%=base%>/labelController/index.do')">
-					<img src="<%=base %>/inc/imgs/qrcode-icon.jpg" border="0" width="60px" height="60px" /><br/>
-					标签模板管理
-					</a>
-				</div>
-				
-				<div title="订单管理" iconCls="icon-users" data-options="selected:true" style="padding:10px;text-align: center;">
-					<a href="javascript:void(0);" onClick="addTab('订单管理','<%=base%>/administration/order/manage.do')">
-					<img src="<%=base %>/inc/imgs/order-icon.png" border="0" width="60px" height="60px" /><br/>
-					订单管理
-					</a>
-				</div>
+
 			</div>
 
 		</div>

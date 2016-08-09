@@ -5,6 +5,8 @@ String base = request.getContextPath();
 
 <!-- jQuery -->
 <%-- <script src="<%=base%>/plugins/jquery-1.8.3.min.js"></script> --%>
+
+
 <script src="<%=base%>/comm/js/jquery-1.11.0.min.js"></script>
 
 <!-- lhgdialog -->

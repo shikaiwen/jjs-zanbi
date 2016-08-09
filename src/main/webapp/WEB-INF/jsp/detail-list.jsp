@@ -132,15 +132,10 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="toDelete()">删除</a>
 
         <div id="condition">
-            <a style="padding-left: 21px;">产品：</a>
-            <input type="text"  size="5" name="productName" id="productName"/>
-            <input type="hidden" disabled size="5" name="productId" id="productId"/>
-            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search"
-            onclick="chooseProduct()">选择产品</a>
 
+            <a style="padding-left: 21px;">所属组：</a>
+            <select name="orgId">${orgSelectHtml}</select>
             <a style="padding-left: 21px;">：</a>
-
-
             <a href="javascript:void(0);" style="margin-left:400px;" class="easyui-linkbutton" iconCls="icon-search"
                onclick="toQuery()">查询</a>
         </div>

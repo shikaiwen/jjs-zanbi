@@ -36,4 +36,14 @@ public class WorkerServiceTest {
 
         System.out.println(listPageInfo);
     }
+
+
+    @Test
+    public void selectByKeyWords(){
+
+        WorkerQueryBean workerQueryBean = new WorkerQueryBean();
+        List<Worker> workerList = workerService.selectByKeyWords(workerQueryBean);
+
+        System.out.println(workerList);
+    }
 }

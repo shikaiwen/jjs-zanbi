@@ -7,6 +7,7 @@ import com.jjs.zanbi.dao.WorkerMapper;
 import com.jjs.zanbi.model.SendRecordDetail;
 import com.jjs.zanbi.querybean.SendRecordQueryBean;
 import com.jjs.zanbi.service.SendRecordDetailService;
+import com.jjs.zanbi.service.SendRecordService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +28,8 @@ public class SendRecordServiceTest {
 
     @Resource SendRecordDetailService sendRecordDetailService;
 
+    @Resource
+    SendRecordService sendRecordService;
     @Resource
     WorkerMapper workerMapper;
 
@@ -50,6 +54,19 @@ public class SendRecordServiceTest {
         System.out.println(JSON.toJSONString(pageInfo, SerializerFeature.DisableCircularReferenceDetect));
 
         System.out.println(pageInfo);
+
+    }
+
+    @Test
+    public void selectSendCountByMonth(){
+
+        int senderId = 1;
+        Date date = new Date();
+        date.setDate(1);
+        date.setMonth(6);
+        int i = sendRecordService.selectSendCountByMonth(senderId, date);
+
+        System.out.println(i);
 
     }
 }

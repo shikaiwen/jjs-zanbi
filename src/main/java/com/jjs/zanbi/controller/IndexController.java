@@ -6,6 +6,9 @@ import com.jjs.zanbi.querybean.SendRecordQueryBean;
 import com.jjs.zanbi.service.SendRecordDetailService;
 import com.jjs.zanbi.service.SendRecordService;
 import com.jjs.zanbi.service.WorkerService;
+import com.jjs.zanbi.utils.AjaxResp;
+import com.jjs.zanbi.utils.CommResult;
+import com.jjs.zanbi.utils.SelectUtil;
 import com.jjs.zanbi.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,12 +30,22 @@ public class IndexController {
 	@Autowired SendRecordService recordService;
 	@Autowired SendRecordDetailService recordDetailService;
     @Autowired WorkerService workerService;
+    @Autowired SelectUtil selectUtil;
 
+    @RequestMapping("send")
+    public ModelAndView sendPage(){
+
+        ModelAndView mav = new ModelAndView("front/send");
+        return mav;
+    }
 
     @RequestMapping("getListPage")
     public ModelAndView getListPage(SendRecordQueryBean queryBean){
 
-        ModelAndView mv = new ModelAndView("administration/detail-list");
+        String orgSelectHtml = selectUtil.getOrgSelectHtml(true);
+
+
+        ModelAndView mv = new ModelAndView("detail-list");
         return mv;
     }
 
@@ -71,13 +84,17 @@ public class IndexController {
     
     
     @RequestMapping("dosend")
-    public ModelAndView doSend(HttpServletRequest req){
+    @ResponseBody
+    public Object doSend(HttpServletRequest req){
 
-        recordService.doSend(req);
+        CommResult commResult = recordService.doSend(req);
 
-        ModelAndView mav = new ModelAndView("success");
-        return mav;
-    	
+        if (commResult.isSuccess()) {
+            return AjaxResp.getOkResp();
+        }
+
+        return AjaxResp.getErrResp();
+
     }
 
 

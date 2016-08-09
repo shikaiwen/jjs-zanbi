@@ -37,5 +37,8 @@ public interface WorkerService {
 
     public boolean deleteByPrimaryKey(int id);
 
+    public List<Worker> selectByKeyWords(WorkerQueryBean workerQueryBean);
+
+    public int countByOrg(int orgId);
 
 }

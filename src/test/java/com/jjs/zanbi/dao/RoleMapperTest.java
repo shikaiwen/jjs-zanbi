@@ -5,7 +5,6 @@ import com.jjs.zanbi.test.BasicTest;
 import org.junit.Test;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by kaiwen on 2016/8/6.
@@ -18,8 +17,8 @@ public class RoleMapperTest extends BasicTest{
     @Test
     public void selectByPk(){
 
-
-
+        Role role = roleMapper.selectByPrimaryKey(1);
+        System.out.println(role);
 
     }
 

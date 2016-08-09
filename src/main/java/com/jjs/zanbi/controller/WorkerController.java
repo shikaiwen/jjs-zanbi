@@ -48,7 +48,7 @@ public class WorkerController {
     public ModelAndView workerListPage(WorkerQueryBean queryBean){
 
         ModelAndView mav = new ModelAndView("worker/worker-list");
-        mav.addObject("orgSelectHtml", selectUtil.getOrgSelectHtml());
+        mav.addObject("orgSelectHtml", selectUtil.getOrgSelectHtml(true));
 
         return mav;
     }
@@ -68,8 +68,8 @@ public class WorkerController {
     public ModelAndView goAdd(Worker worker){
 
         ModelAndView mav = new ModelAndView("worker/add");
-        mav.addObject("orgSelectHtml", selectUtil.getOrgSelectHtml());
-        mav.addObject("roleSelectHtml", selectUtil.getRoleSelectHtml());
+        mav.addObject("orgSelectHtml", selectUtil.getOrgSelectHtml(false));
+        mav.addObject("roleSelectHtml", selectUtil.getRoleSelectHtml(false));
 
 
         return mav;
@@ -91,6 +91,14 @@ public class WorkerController {
         boolean result = workerService.deleteByPrimaryKey(worker.getId());
 
         return result ? "ok" : "error";
+    }
+
+    @RequestMapping("queryByKeywords")
+    @ResponseBody
+    public Object queryByKeywords(WorkerQueryBean queryBean) {
+
+        List<Worker> workerList = workerService.selectByKeyWords(queryBean);
+        return AjaxResp.getOkResp().put("list", workerList);
     }
 
 }

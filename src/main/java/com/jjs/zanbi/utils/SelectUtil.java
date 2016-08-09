@@ -22,9 +22,12 @@ public class SelectUtil {
     @Resource
     RoleService roleService;
 
-    public String getOrgSelectHtml(){
+    public String getOrgSelectHtml(boolean withoption){
 
         StringBuffer sb = new StringBuffer();
+        if(withoption){
+            sb.append("<option>--请选择--</option>");
+        }
         List<Org> orgList = orgService.selectAll();
 
         for (Org org : orgList) {
@@ -42,9 +45,14 @@ public class SelectUtil {
     }
 
 
-    public String getRoleSelectHtml(){
+
+    public String getRoleSelectHtml(boolean withoption){
+
         StringBuffer sb = new StringBuffer();
 
+        if(withoption){
+            sb.append("<option>--请选择--</option>");
+        }
         List<Role> roleList = roleService.selectAll();
 
         for (Role role : roleList) {

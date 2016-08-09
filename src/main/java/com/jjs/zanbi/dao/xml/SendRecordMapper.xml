@@ -10,6 +10,10 @@
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="sender_ip" jdbcType="VARCHAR" property="senderIp" />
+
+    <result column="is_qa_prize" jdbcType="INTEGER" property="isQaPrize" />
+    <result column="is_pro_prize" jdbcType="INTEGER" property="isProPrize" />
+
   </resultMap>
 
 
@@ -18,7 +22,10 @@
         ${alias}.SENDER_ID as ${prefix}SENDER_ID,
         ${alias}.SEND_TIME as ${prefix}SEND_TIME,
         ${alias}.REMARK as ${prefix}REMARK,
-        ${alias}.SENDER_IP as ${prefix}SENDER_IP
+        ${alias}.SENDER_IP as ${prefix}SENDER_IP,
+        ${alias}.IS_QA_PRIZE as ${prefix}IS_QA_PRIZE,
+        ${alias}.IS_PRO_PRIZE as ${prefix}SENDER_IP
+
     </sql>
 
 

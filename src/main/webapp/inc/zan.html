@@ -38,7 +38,21 @@
 		background: #f3faf1 url("side.jpg") repeat-x ;
 		font-family: "微软雅黑","Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	}
-	
+
+
+    .roundinput{
+        padding: 6px 12px;
+        border-radius : 5px;
+        border: 1px solid #ccc;
+    }
+
+    .roundinput:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+
 	.itemDiv{
 		margin: 20px 40px;
 		padding-bottom: 20px ;
@@ -84,7 +98,39 @@
     }
 
     #searchDiv li a:hover{
+        color: #ffffff;
+        background-color:#474752;
+    }
 
+
+
+
+
+
+
+    #senderSearchDiv{
+
+    }
+    #senderSearchDiv ul{
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    }
+
+    #senderSearchDiv li{
+
+    }
+
+    #senderSearchDiv li a{
+        text-decoration:none;
+        color:#000000;
+        width:100%;
+        height:100%;
+        display:block;
+    }
+
+    #senderSearchDiv li a:hover{
         color: #ffffff;
         background-color:#474752;
     }
@@ -122,11 +168,38 @@
 
         $("#searchDiv").find("ul").delegate("a","click",function(){
 
-            alert('me');
+            //清空input
+            $(toWhoInput).val('')
+
+            var tag = $(this).text();
+
+            $("<span name='tag'></span>").text(tag).appendTo($("#tagsDiv"));
+
+            setToWhoInputLeftPadding();
+
             $("#searchDiv").hide();
 
         });
     });
+
+
+function setToWhoInputLeftPadding(){
+    //设置位置
+    var tagsWidth = 0;
+    $(tagsDiv).children().each(function(){
+        tagsWidth += $(this).get(0).offsetWidth;
+    });
+
+    if($(tagsDiv).children().length >= 2){
+        tagsWidth += $(tagsDiv).children().length * 1 ;
+    }
+
+    //留的左padding
+    var left = 5 ;
+    var toSetLeftPadding = tagsWidth + left + 5 + "px";
+    $(toWhoInput).css("padding-left", toSetLeftPadding);
+   // $(searchDiv).css("margin-left",tagsWidth + 10 + "px" );
+}
 
 
     function bindKeyEvent(){
@@ -134,16 +207,31 @@
         //按键事件
         $("input[name='toWhoInput']").on("input",function(event){
 
-            $("#searchDiv").css("display", "block");
+
+            $.post("/zan/worker/queryByKeywords",{}function(datas){
+
+                var list = datas.data.list;
+
+                for(var v =0;v<list.length;v++) {
+
+                    var str = "<li><a id='"+ v.id +"'href='javascript:;'>" + v.name  +"</a></li>";
+
+
+
+                }
+
+                setToWhoInputLeftPadding();
+                $("#searchDiv").show();
+
+
+            });
+
         });
-
-
-
 
     }
 
-    function bindSearch(){
 
+    function bindSearch(){
 
 
 
@@ -163,30 +251,82 @@
 				<div>1、发送人：</div>
 				
 				<input size="80" style="margin-top: 15px; margin-left: 10px;" />
-				
+                <div id="senderSearchDiv" style="display:none;border:1px solid #e2e6ff;">
+                    <ul>
+
+                        <li><a href="javascript:;">民大1</a></li>
+                        <li><a href="javascript:;">民大2</a></li>
+                        <li><a href="javascript:;">民大3</a></li>
+                        <li><a href="javascript:;">民大4</a></li>
+                    </ul>
+                </div>
+
+
 			</div>
 			
 			
 			<div class="itemDiv">
-				<div>2、toWho：</div>
+
+				<div>2、toWho：
+                </div>
 
 
-				<input size="80" name="toWhoInput" style="margin-top: 15px; margin-left: 10px;"/>
+                <style>
 
-                <div id="d_tag2"><span title="单击删除该标签">什么东东</span><span title="单击删除该标签">地方</span></div>
+                    .tagsDiv{
+                        font-size:10px;
+                    }
 
-                <div id="searchDiv" style="display:none;width:100px;height:300px;border:1px solid red;">
+                    .tagsDiv span{
+                        float:left;margin-left:1px;border: 1px solid red;background-color: pink;padding:2px 2px;
+                    }
+                    #my1{
+                        list-style-type: none;
+                        display:inline;
+                    }
+                    #my1 li{
+                        float:left;
+                        margin-left:8px;
+                    }
+                </style>
 
-                    <ul>
-                        <li><a href="javascript:;">民大</a></li>
-                        <li><a href="javascript:;">民大</a></li>
-                        <li><a href="javascript:;">民大</a></li>
-                        <li><a href="javascript:;">民大</a></li>
-                        <li><a href="javascript:;">民大</a></li>
-                        <li><a href="javascript:;">民大</a></li>
+
+                <input size="80" id="toWhoInput" class="roundinput" name="toWhoInput" style="margin-top: 15px; margin-left: 10px;"/>
+                <div></div>
+
+<script>
+    $(function(){
+
+        var tagsWidth = 0;
+        $(tagsDiv).children().each(function(){
+            tagsWidth += $(this).get(0).offsetWidth;
+        });
+
+
+        //留的左padding
+        var left = 5 ;
+        var toSetLeftPadding = tagsWidth + left + 5 + "px";
+        $(toWhoInput).css("padding-left", toSetLeftPadding);
+
+        var top = -toWhoInput.offsetHeight;
+
+        $(tagsDiv).css("left",left);
+        $(tagsDiv).css("top",top + 2);
+
+    })
+</script>
+
+                <div id="tagsDiv" class="tagsDiv" style="position:relative;margin-left:10px;">
+
+                </div>
+
+
+                <div id="searchDiv" style="display:none;border:1px solid #e2e6ff;">
+                    <ul id="receiverUl">
+
                     </ul>
                 </div>
-			</div>
+            </div>
 			
 			
 			<div class="itemDiv">

@@ -53,9 +53,9 @@ public class IndexControllerTest {
         MockHttpServletRequestBuilder builder = get("/dosend");
 
 		builder.param("senderid", "2")
-        .param("receiverId","1","2","3")
+        .param("receiverId[]","1")
                 .param("countUnit","1")
-        .param("remark","88888888")
+        .param("remark","55555555556")
         ;
         ResultActions re = mockMvc.perform(builder);
         re.andDo(print() );

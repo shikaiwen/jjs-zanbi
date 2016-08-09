@@ -9,4 +9,5 @@ import java.util.List;
 public interface WorkerMapper extends Mapper<Worker> {
 
     List<Worker> selectByPage(WorkerQueryBean queryBean);
+
 }

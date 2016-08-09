@@ -7,6 +7,7 @@ import com.jjs.zanbi.querybean.WorkerQueryBean;
 import com.jjs.zanbi.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -25,6 +26,17 @@ public class WorkerServiceImpl implements WorkerService {
         return workerMapper.selectByPrimaryKey(id);
     }
 
+
+    @Override
+    public int countByOrg(int orgId){
+
+        Example example = new Example(Worker.class);
+        example.createCriteria().andEqualTo("orgId", orgId);
+        int count = workerMapper.selectCountByExample(example);
+        return count;
+    }
+
+
     public Worker selectWorkerBySenderId(int senderId) {
 //        WorkerExample example = new WorkerExample();
 //        WorkerExample.Criteria criteria = example.createCriteria();
@@ -32,7 +44,9 @@ public class WorkerServiceImpl implements WorkerService {
 //
 //        Worker worker = workerMapper.selectByPrimaryKey(senderId);
 
-        return null;
+
+        return workerMapper.selectByPrimaryKey(senderId);
+
     }
 
     //包含机构信息
@@ -50,8 +64,16 @@ public class WorkerServiceImpl implements WorkerService {
 
     public boolean deleteByPrimaryKey(int id) {
         int count = workerMapper.deleteByPrimaryKey(id);
+
         return count == 1;
     }
 
+    public List<Worker> selectByKeyWords(WorkerQueryBean workerQueryBean){
+        Example ex = new Example(Worker.class);
+//        ex.createCriteria().andIn("name", Arrays.asList(workerQueryBean.getName()));
+        ex.createCriteria().andLike("name", "%"+workerQueryBean.getKeywords()+"%");
+        List<Worker> workerList = workerMapper.selectByExample(ex);
+        return workerList;
+    }
 
 }
