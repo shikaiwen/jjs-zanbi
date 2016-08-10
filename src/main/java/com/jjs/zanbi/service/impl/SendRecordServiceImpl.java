@@ -1,24 +1,23 @@
 package com.jjs.zanbi.service.impl;
 
 import com.jjs.zanbi.dao.RoleMapper;
+import com.jjs.zanbi.dao.SendRecordDetailMapper;
 import com.jjs.zanbi.dao.SendRecordMapper;
 import com.jjs.zanbi.model.*;
-import com.jjs.zanbi.service.SendRecordDetailService;
-import com.jjs.zanbi.service.SendRecordService;
-import com.jjs.zanbi.service.WorkerService;
-import com.jjs.zanbi.service.ZbRoleService;
+import com.jjs.zanbi.querybean.WorkerQueryBean;
+import com.jjs.zanbi.service.*;
 import com.jjs.zanbi.utils.CommResult;
+import com.jjs.zanbi.utils.Const;
 import com.jjs.zanbi.utils.WebUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/7/26.
@@ -26,11 +25,16 @@ import java.util.Locale;
 @Service("sendRecordService")
 public class SendRecordServiceImpl implements SendRecordService {
 
+    static Logger logger = LoggerFactory.getLogger(SendRecordServiceImpl.class);
+
     @Autowired
     SendRecordDetailService recordDetailService;
 
     @Autowired
     SendRecordMapper sendRecordMapper;
+
+    @Autowired
+    SendRecordDetailMapper sendRecordDetailMapper;
 
     @Autowired
     ZbRoleService zbRoleService;
@@ -40,6 +44,77 @@ public class SendRecordServiceImpl implements SendRecordService {
 
     @Autowired
     RoleMapper roleMapper;
+
+    @Autowired
+    OrgService orgService;
+    public Map<String,Object> sumAllOrg(){
+
+        List<Org> orgList =  orgService.selectAll();
+
+        Map<String,Object> sumMap = new HashMap<String,Object>();
+
+        for (Org org : orgList) {
+            WorkerQueryBean workerQueryBean = new WorkerQueryBean();
+            workerQueryBean.setOrgId(org.getId());
+
+
+            List<Worker> workerList = workerService.selectByKeyWords(workerQueryBean);
+
+            int orgSum = 0;
+
+
+            for (Worker worker : workerList) {
+
+
+                Role role = roleMapper.selectByPrimaryKey(worker.getRoleId());
+                int workerGet = 0;
+                int workerId = worker.getId();
+
+                int receiveCount = sendRecordDetailMapper.getReceiveCountByWorker(workerId);
+                int sendCount = sendRecordDetailMapper.getSendCountByWorker(workerId);
+
+                if(sendCount <= Const.MEMBER_ZAN_COUNT){
+                    sendCount = 0;
+                }
+
+                if(role.getIsProductMgr().equals("1")){
+
+                    workerGet = this.getInitCount(workerId);
+
+                    workerGet -= sendCount;
+                    workerGet += receiveCount;
+
+                }else{
+
+                    workerGet = receiveCount;
+
+                    workerGet -= sendCount;
+
+                }
+
+                logger.debug( " {} 获取有效赞币 {} 个" , worker.getName() , workerGet );
+
+                orgSum += workerGet;
+
+            }
+
+        }
+
+        return sumMap;
+
+    }
+
+
+    public int getRealCountByWorker(int workerId) {
+
+        int sendCount = sendRecordDetailMapper.getSendCountByWorker(workerId);
+        int receiveCount = sendRecordDetailMapper.getReceiveCountByWorker(workerId);
+
+        if(sendCount<=5) return receiveCount;
+
+        return receiveCount + 5 - sendCount;
+
+    }
 
     public SendRecord selectById(int i) {
         SendRecord sendRecord = sendRecordMapper.selectByPrimaryKey(i);
@@ -108,6 +183,29 @@ public class SendRecordServiceImpl implements SendRecordService {
         return result;
     }
 
+
+    public int getInitCount(int workerId) {
+
+        Worker worker = workerService.selectWorkerBySenderId(workerId);
+        int senderRoleId = worker.getRoleId();
+
+        Role senderRole = roleMapper.selectByPrimaryKey(senderRoleId);
+
+        ZbRule zbRule =  zbRoleService.selectZbRoleById(senderRole.getZbRuleId());
+        int roleCount = 0;
+        //计算规则有两种一种是通过计算，一种是固定值
+        if(zbRule.getZbComputeType().equals("1")){
+            roleCount = zbRule.getZbCount();
+        }else{
+            //根据表达式计算
+            String cal = zbRule.getCalculate();
+            int orgCount = workerService.countByOrg(worker.getOrgId());
+            String sub = cal.replace("sub",orgCount+"");
+            roleCount = WebUtils.getSubMemByJs(sub);
+        }
+
+        return roleCount;
+    }
 
     public int getAllowSendCount(int senderId) {
 

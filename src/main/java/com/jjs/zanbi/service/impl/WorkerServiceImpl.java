@@ -71,7 +71,11 @@ public class WorkerServiceImpl implements WorkerService {
     public List<Worker> selectByKeyWords(WorkerQueryBean workerQueryBean){
         Example ex = new Example(Worker.class);
 //        ex.createCriteria().andIn("name", Arrays.asList(workerQueryBean.getName()));
-        ex.createCriteria().andLike("name", "%"+workerQueryBean.getKeywords()+"%");
+
+        Example.Criteria criteria =ex.createCriteria();
+        criteria.andLike("name", "%"+workerQueryBean.getKeywords()+"%");
+        criteria.andEqualTo("orgId", workerQueryBean.getOrgId());
+
         List<Worker> workerList = workerMapper.selectByExample(ex);
         return workerList;
     }

@@ -51,7 +51,18 @@
 
 
 
+<select id="sumByOrg" parameterType="map">
 
+select a.* , SUM(a.zb_count) as total, c.org_name from
+send_record_detail  a
+left join worker b on a.receiver_id=b.id
+left join org c on b.org_id=c.id
+
+where receiver_id in ( select id from worker where org_id= #{orgId}  )
+and a.send_time between #{startTime} and #{endTime}
+
+
+</select>
 
 
 </mapper>
